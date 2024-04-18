@@ -134,9 +134,9 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /*!**********************************!*\
   !*** ./src/ChatbotAssistant.tsx ***!
   \**********************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst react_1 = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n__webpack_require__(/*! ./styles/styles.css */ \"./src/styles/styles.css\"); // Import CSS styles\nconst React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nconst ChatbotAssistant = () => {\n    const [isChatOpen, setIsChatOpen] = (0, react_1.useState)(false);\n    const [messages, setMessages] = (0, react_1.useState)([]);\n    const [inputValue, setInputValue] = (0, react_1.useState)('');\n    const toggleChatPopup = () => {\n        setIsChatOpen(!isChatOpen);\n    };\n    const handleCloseBtnClick = () => {\n        setIsChatOpen(false);\n    };\n    const handleMessageSend = () => {\n        if (inputValue.trim() !== '') {\n            setMessages([...messages, inputValue]);\n            setInputValue('');\n        }\n    };\n    const handleKeyDown = (event) => {\n        if (event.key === 'Enter') {\n            handleMessageSend();\n        }\n    };\n    return (React.createElement(\"div\", null,\n        React.createElement(\"button\", { type: \"button\", onClick: toggleChatPopup }, \"Chat\"),\n        isChatOpen && (React.createElement(\"div\", { className: \"chat-popup\" },\n            React.createElement(\"div\", { className: \"chat-header\" },\n                React.createElement(\"span\", { className: \"close-btn\", onClick: handleCloseBtnClick }, \"\\u00D7\")),\n            React.createElement(\"div\", { className: \"chat-messages\" }, messages.map((message, index) => (React.createElement(\"div\", { key: index, className: \"message\" }, message)))),\n            React.createElement(\"div\", { className: \"input-box\" },\n                React.createElement(\"input\", { type: \"text\", placeholder: \"Type your message...\", value: inputValue, onChange: (e) => setInputValue(e.target.value), onKeyDown: handleKeyDown }),\n                React.createElement(\"button\", { type: \"button\", onClick: handleMessageSend }, \"Send\"))))));\n};\nexports[\"default\"] = ChatbotAssistant;\n\n\n//# sourceURL=webpack://chat-assistant/./src/ChatbotAssistant.tsx?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst react_1 = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n__webpack_require__(/*! ./styles/styles.css */ \"./src/styles/styles.css\"); // Import CSS styles\nconst react_2 = __importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\nconst ChatbotAssistant = () => {\n    const [isChatOpen, setIsChatOpen] = (0, react_1.useState)(false);\n    const [messages, setMessages] = (0, react_1.useState)([]);\n    const [inputValue, setInputValue] = (0, react_1.useState)('');\n    const toggleChatPopup = () => {\n        setIsChatOpen(!isChatOpen);\n    };\n    const handleCloseBtnClick = () => {\n        setIsChatOpen(false);\n    };\n    const handleMessageSend = () => {\n        if (inputValue.trim() !== '') {\n            setMessages([...messages, inputValue]);\n            setInputValue('');\n        }\n    };\n    const handleKeyDown = (event) => {\n        if (event.key === 'Enter') {\n            handleMessageSend();\n        }\n    };\n    return (react_2.default.createElement(\"div\", null,\n        react_2.default.createElement(\"button\", { type: \"button\", onClick: toggleChatPopup }, \"Chat\"),\n        isChatOpen && (react_2.default.createElement(\"div\", { className: \"chat-popup\" },\n            react_2.default.createElement(\"div\", { className: \"chat-header\" },\n                react_2.default.createElement(\"span\", { className: \"close-btn\", onClick: handleCloseBtnClick }, \"\\u00D7\")),\n            react_2.default.createElement(\"div\", { className: \"chat-messages\" }, messages.map((message, index) => (react_2.default.createElement(\"div\", { key: index, className: \"message\" }, message)))),\n            react_2.default.createElement(\"div\", { className: \"input-box\" },\n                react_2.default.createElement(\"input\", { type: \"text\", placeholder: \"Type your message...\", value: inputValue, onChange: (e) => setInputValue(e.target.value), onKeyDown: handleKeyDown }),\n                react_2.default.createElement(\"button\", { type: \"button\", onClick: handleMessageSend }, \"Send\"))))));\n};\nexports[\"default\"] = ChatbotAssistant;\n\n\n//# sourceURL=webpack://chat-assistant/./src/ChatbotAssistant.tsx?");
 
 /***/ }),
 
@@ -144,9 +144,9 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\ncons
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.ChatbotAssistant = void 0;\nvar ChatbotAssistant_1 = __webpack_require__(/*! ./ChatbotAssistant */ \"./src/ChatbotAssistant.tsx\");\nObject.defineProperty(exports, \"ChatbotAssistant\", ({ enumerable: true, get: function () { return ChatbotAssistant_1.default; } }));\n\n\n//# sourceURL=webpack://chat-assistant/./src/index.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.ChatbotAssistant = void 0;\nvar ChatbotAssistant_1 = __webpack_require__(/*! ./ChatbotAssistant */ \"./src/ChatbotAssistant.tsx\");\nObject.defineProperty(exports, \"ChatbotAssistant\", ({ enumerable: true, get: function () { return __importDefault(ChatbotAssistant_1).default; } }));\n\n\n//# sourceURL=webpack://chat-assistant/./src/index.ts?");
 
 /***/ })
 
@@ -170,7 +170,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
@@ -238,7 +238,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
 /******/ 	
 /******/ })()

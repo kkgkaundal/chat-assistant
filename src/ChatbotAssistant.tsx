@@ -1,6 +1,6 @@
 import { useState, KeyboardEvent } from 'react';
 import './styles/styles.css'; // Import CSS styles
-import React = require('react');
+import React from 'react';
 
 const ChatbotAssistant: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
