@@ -49,13 +49,14 @@ const ChatbotAssistant: React.FC = () => {
           </div>
           <div className="input-box">
             <input
+              id="messageInput"
               type="text"
               placeholder="Type your message..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
             />
-            <button type="button" onClick={handleMessageSend}>
+            <button type="button" className='sendBtn' onClick={handleMessageSend}>
               Send
             </button>
           </div>
