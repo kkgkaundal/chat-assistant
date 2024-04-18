@@ -30,7 +30,7 @@ const ChatbotAssistant: React.FC = () => {
 
   return (
     <div>
-      <button type="button" onClick={toggleChatPopup}>
+      <button id="chatBtn" type="button" onClick={toggleChatPopup}>
         Chat
       </button>
       {isChatOpen && (

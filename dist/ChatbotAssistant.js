@@ -28,7 +28,7 @@ const ChatbotAssistant = () => {
         }
     };
     return (react_2.default.createElement("div", null,
-        react_2.default.createElement("button", { type: "button", onClick: toggleChatPopup }, "Chat"),
+        react_2.default.createElement("button", { id: "chatBtn", type: "button", onClick: toggleChatPopup }, "Chat"),
         isChatOpen && (react_2.default.createElement("div", { className: "chat-popup" },
             react_2.default.createElement("div", { className: "chat-header" },
                 react_2.default.createElement("span", { className: "close-btn", onClick: handleCloseBtnClick }, "\u00D7")),
