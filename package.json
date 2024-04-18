@@ -1,6 +1,6 @@
 {
   "name": "chat-assistant",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc && webpack",
     "clean": "rimraf dist",
-    "prebuild": "npm run clean"
+    "prebuild": "npm run clean",
+    "build:umd": "webpack --config webpack.umd.config.js"
   },
   "keywords": [
     "react",
