@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -10,6 +11,11 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"], // Add support for TypeScript files
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "src/styles/styles.css", to: "styles" }],
+    }),
+  ],
   module: {
     rules: [
       {
