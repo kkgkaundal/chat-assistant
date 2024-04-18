@@ -34,13 +34,13 @@ const ChatbotAssistant: React.FC = () => {
         Chat
       </button>
       {isChatOpen && (
-        <div className="chat-popup">
+        <div className="chat-popup" id="chatPopup">
           <div className="chat-header">
-            <span className="close-btn" onClick={handleCloseBtnClick}>
+            <span className="close-btn" id="closeBtn" onClick={handleCloseBtnClick}>
               &times;
             </span>
           </div>
-          <div className="chat-messages">
+          <div className="chat-messages" id="chatMessages">
             {messages.map((message, index) => (
               <div key={index} className="message">
                 {message}
@@ -56,7 +56,7 @@ const ChatbotAssistant: React.FC = () => {
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
             />
-            <button type="button" className='sendBtn' onClick={handleMessageSend}>
+            <button type="button" className='sendBtn' id="sendBtn" onClick={handleMessageSend}>
               Send
             </button>
           </div>
