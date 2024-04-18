@@ -1,1 +1,1 @@
-export { default as ChatbotAssistant } from "./ChatbotAssistant";
+export { default as ChatbotAssistant } from "./components/ChatbotAssistant";

@@ -1,10 +1,12 @@
 import { useState, KeyboardEvent } from 'react';
-import './styles/styles.css'; // Import CSS styles
+import '../styles/styles.css';
 import React from 'react';
+import { Message } from '../types/message';
+import { ChatbotAssistantProps } from '../types/chat-assistant-props';
 
-const ChatbotAssistant: React.FC = () => {
+const ChatbotAssistant: React.FC<ChatbotAssistantProps> = (props) => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
 
   const toggleChatPopup = () => {
@@ -17,7 +19,12 @@ const ChatbotAssistant: React.FC = () => {
 
   const handleMessageSend = () => {
     if (inputValue.trim() !== '') {
-      setMessages([...messages, inputValue]);
+      const message: Message = {
+        text: inputValue,
+        owner: 'user',
+        time: new Date()
+      }
+      setMessages([...messages, message]);
       setInputValue('');
     }
   };
@@ -42,8 +49,8 @@ const ChatbotAssistant: React.FC = () => {
           </div>
           <div className="chat-messages" id="chatMessages">
             {messages.map((message, index) => (
-              <div key={index} className="message">
-                {message}
+              <div key={index} className={`message ${message.owner === "user" ? 'user-message' : 'assistant-message'}`} >
+                {message.text}
               </div>
             ))}
           </div>

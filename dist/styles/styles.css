@@ -46,6 +46,8 @@
   overflow-y: auto;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Style for message input */
@@ -77,4 +79,13 @@
 #chatMessages div {
   word-wrap: break-word;
   padding-top: 5px;
+}
+
+
+.user-message {
+  align-self: flex-start; /* Align user messages to the left */
+}
+
+.assistant-message {
+  align-self: flex-end; /* Align assistant messages to the right */
 }
