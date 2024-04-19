@@ -1,6 +1,6 @@
 {
   "name": "chat-assistant",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,9 @@
     "build": "tsc && webpack",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build:umd": "webpack --config webpack.umd.config.js"
+    "build:umd": "webpack --config webpack.umd.config.js",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "keywords": [
     "react",
@@ -46,6 +48,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "prettier": "^3.2.5",
     "rimraf": "^5.0.5"
   }
 }

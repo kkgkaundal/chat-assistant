@@ -1,3 +1,8 @@
+import { Message } from './message'
+
 export interface ChatbotAssistantProps {
-  // Define props here
+  message?: Message
+  messages?: Message[]
+  isChatOpen?: boolean
+  setUserInput?: React.Dispatch<React.SetStateAction<string>>
 }
