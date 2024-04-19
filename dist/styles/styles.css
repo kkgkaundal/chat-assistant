@@ -125,7 +125,14 @@
 .message {
   display: flex;
   flex-direction: row;
+  border: 1px solid #00000014;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
 }
 .message p {
+  word-wrap: break-word;
   margin: auto;
+  word-break: break-word !important;
+  text-align: justify;
 }
