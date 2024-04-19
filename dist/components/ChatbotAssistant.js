@@ -22,6 +22,15 @@ const ChatbotAssistant = (props) => {
     const [isChatOpen, setIsChatOpen] = (0, react_1.useState)(props.isChatOpen ? props.isChatOpen : false);
     const [messages, setMessages] = (0, react_1.useState)(props.messages ? props.messages : []);
     const [inputValue, setInputValue] = (0, react_1.useState)('');
+    const chatMessagesRef = (0, react_1.useRef)(null);
+    const scrollToBottom = () => {
+        if (chatMessagesRef.current) {
+            chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+        }
+    };
+    (0, react_1.useEffect)(() => {
+        scrollToBottom();
+    }, [messages]);
     const toggleChatPopup = () => {
         setIsChatOpen(!isChatOpen);
     };
@@ -36,6 +45,12 @@ const ChatbotAssistant = (props) => {
                 time: new Date(),
             };
             setMessages([...messages, message]);
+            if (props.isCustomAPI && props.setUserInput) {
+                props.setUserInput(inputValue);
+            }
+            else {
+                handleAssistantResponse();
+            }
             setInputValue('');
         }
     };
@@ -44,16 +59,6 @@ const ChatbotAssistant = (props) => {
             setMessages([...messages, props.message]);
         }
     }, [props.message]);
-    (0, react_1.useEffect)(() => {
-        if (inputValue.trim() !== '') {
-            if (props.isCustomAPI && props.setUserInput) {
-                props.setUserInput(inputValue);
-            }
-            else {
-                handleAssistantResponse();
-            }
-        }
-    }, [inputValue]);
     const handleAssistantResponse = () => __awaiter(void 0, void 0, void 0, function* () {
         const data = {
             text: inputValue.trim(),
@@ -78,7 +83,7 @@ const ChatbotAssistant = (props) => {
                         react_2.default.createElement("div", { className: "online-sign" }),
                         react_2.default.createElement("div", null, "Online"))),
                 react_2.default.createElement("span", { className: "close-btn", id: "closeBtn", onClick: handleCloseBtnClick }, "\u00D7")),
-            react_2.default.createElement("div", { className: "chat-messages", id: "chatMessages" }, messages.map((message, index) => (react_2.default.createElement("div", { key: index, className: `message ${message.owner === 'user' ? 'user-message' : 'assistant-message'}` },
+            react_2.default.createElement("div", { className: "chat-messages", id: "chatMessages", ref: chatMessagesRef }, messages.map((message, index) => (react_2.default.createElement("div", { key: index, className: `message ${message.owner === 'user' ? 'user-message' : 'assistant-message'}` },
                 react_2.default.createElement("p", null, message.text),
                 react_2.default.createElement("span", { className: "message-time" }, (0, helpers_1.formatMessageTime)(message.time)))))),
             react_2.default.createElement("div", { className: "input-box" },

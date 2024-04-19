@@ -1,4 +1,4 @@
-import { useState, KeyboardEvent, useEffect } from 'react'
+import { useState, KeyboardEvent, useEffect, useRef } from 'react'
 import '../styles/styles.css'
 import React from 'react'
 import { Message } from '../types/message'
@@ -12,6 +12,18 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
   const [isChatOpen, setIsChatOpen] = useState<boolean>(props.isChatOpen ? props.isChatOpen : false)
   const [messages, setMessages] = useState<Message[]>(props.messages ? props.messages : [])
   const [inputValue, setInputValue] = useState<string>('')
+
+  const chatMessagesRef = useRef<HTMLDivElement>(null)
+
+  const scrollToBottom = () => {
+    if (chatMessagesRef.current) {
+      chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight
+    }
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
 
   const toggleChatPopup = () => {
     setIsChatOpen(!isChatOpen)
@@ -29,6 +41,11 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
         time: new Date(),
       }
       setMessages([...messages, message])
+      if (props.isCustomAPI && props.setUserInput) {
+        props.setUserInput(inputValue)
+      } else {
+        handleAssistantResponse()
+      }
       setInputValue('')
     }
   }
@@ -37,16 +54,6 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
       setMessages([...messages, props.message])
     }
   }, [props.message])
-
-  useEffect(() => {
-    if (inputValue.trim() !== '') {
-      if (props.isCustomAPI && props.setUserInput) {
-        props.setUserInput(inputValue)
-      } else {
-        handleAssistantResponse()
-      }
-    }
-  }, [inputValue])
 
   const handleAssistantResponse = async () => {
     const data: IChatAssistant = {
@@ -93,7 +100,8 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
           </div>
           <div
             className="chat-messages"
-            id="chatMessages">
+            id="chatMessages"
+            ref={chatMessagesRef}>
             {messages.map((message, index) => (
               <div
                 key={index}
