@@ -1,7 +1,7 @@
 export interface AssistantOptions {
-    name?: string;
-    apiUrl?: string;
-    token?: string;
-    apiKey?: string;
-    isCustomAPI?: boolean;
+  name?: string
+  apiUrl?: string
+  token?: string
+  apiKey?: string
+  isCustomAPI?: boolean
 }
