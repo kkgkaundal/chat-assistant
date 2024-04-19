@@ -4,7 +4,7 @@ import React from 'react'
 import { Message } from '../types/message'
 import { ChatbotAssistantProps } from '../types/chat-assistant-props'
 import { formatMessageTime } from '../helpers/helpers'
-import { chatAssistantAPIResponse } from '../services/chat-assistant-service'
+import { chatAssistantAPIResponse, chatGPTAssistantAPIResponse } from '../services/chat-assistant-service'
 import { IChatAssistant } from '../types/chat-assistant-interface'
 import { AssistantOptions } from '../types/assistant-options'
 
@@ -43,8 +43,12 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
       setMessages([...messages, message])
       if (props.isCustomAPI && props.setUserInput) {
         props.setUserInput(inputValue)
-      } else {
-        handleAssistantResponse()
+      } else if (props.isChatGPT) {
+        if (props.apiKey) {
+          handleGPTAssistantResponse()
+        } else {
+          throw new Error('API key not provided!')
+        }
       }
       setInputValue('')
     }
@@ -55,11 +59,14 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
     }
   }, [props.message])
 
-  const handleAssistantResponse = async () => {
+  const handleGPTAssistantResponse = async () => {
     const data: IChatAssistant = {
       text: inputValue.trim(),
+      apiKey: props.apiKey,
+      context: props.context,
+      models: props.models,
     }
-    const assistantResponse = await chatAssistantAPIResponse(data)
+    const assistantResponse = await chatGPTAssistantAPIResponse(data)
     if (assistantResponse !== null) {
       setMessages([...messages, assistantResponse.message])
     }

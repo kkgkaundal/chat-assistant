@@ -1,6 +1,6 @@
 {
   "name": "chat-assistant",
-  "version": "1.0.24",
+  "version": "1.0.30",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,6 +48,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "openai": "^4.38.1",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5"
   }

@@ -71,8 +71,12 @@ const ChatbotAssistant = (props) => {
       setMessages([...messages, message])
       if (props.isCustomAPI && props.setUserInput) {
         props.setUserInput(inputValue)
-      } else {
-        handleAssistantResponse()
+      } else if (props.isChatGPT) {
+        if (props.apiKey) {
+          handleGPTAssistantResponse()
+        } else {
+          throw new Error('API key not provided!')
+        }
       }
       setInputValue('')
     }
@@ -82,12 +86,15 @@ const ChatbotAssistant = (props) => {
       setMessages([...messages, props.message])
     }
   }, [props.message])
-  const handleAssistantResponse = () =>
+  const handleGPTAssistantResponse = () =>
     __awaiter(void 0, void 0, void 0, function* () {
       const data = {
         text: inputValue.trim(),
+        apiKey: props.apiKey,
+        context: props.context,
+        models: props.models,
       }
-      const assistantResponse = yield (0, chat_assistant_service_1.chatAssistantAPIResponse)(data)
+      const assistantResponse = yield (0, chat_assistant_service_1.chatGPTAssistantAPIResponse)(data)
       if (assistantResponse !== null) {
         setMessages([...messages, assistantResponse.message])
       }
