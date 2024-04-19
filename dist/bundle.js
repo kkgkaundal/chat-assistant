@@ -2,40 +2,40 @@
 ;(() => {
   'use strict'
   var e = {
-      778: (e, t, n) => {
-        n.d(t, { A: () => s })
-        var r = n(601),
-          o = n.n(r),
-          a = n(314),
-          i = n.n(a)()(o())
+      778: (e, n, t) => {
+        t.d(n, { A: () => s })
+        var r = t(601),
+          o = t.n(r),
+          a = t(314),
+          i = t.n(a)()(o())
         i.push([
           e.id,
-          '/* Style for chat button */\n#chatBtn {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 50%;\n  width: 60px;\n  height: 60px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n/* Style for chat popup */\n.chat-popup {\n  display: block;\n  position: fixed;\n  bottom: 90px;\n  right: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 300px;\n  height: 425px;\n  background-color: white;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);\n}\n\n/* Style for close button */\n.close-btn {\n  float: right;\n  cursor: pointer;\n}\n\n/* Style for chat messages */\n.chat-messages {\n  height: 300px;\n  overflow-y: auto;\n  padding: 10px;\n  border-bottom: 1px solid #ccc;\n  display: flex;\n  flex-direction: column;\n}\n\n/* Style for message input */\n#messageInput {\n  width: calc(100% - 80px);\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n}\n\n.input-box {\n  display: flex;\n  flex-direction: row;\n  align-content: center;\n  margin: 10px;\n}\n\n/* Style for send button */\n#sendBtn {\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  padding: 10px 20px;\n  cursor: pointer;\n  margin-left: 5px;\n}\n\n#chatMessages div {\n  word-wrap: break-word;\n  padding-top: 5px;\n}\n\n.user-message {\n  align-self: flex-start; /* Align user messages to the left */\n}\n\n.assistant-message {\n  align-self: flex-end; /* Align assistant messages to the right */\n}\n\n/* Chat info */\n.chat-info h3 {\n  margin: 0;\n  font-size: 16px;\n}\n\n/* Online sign */\n.online-sign {\n  width: 8px;\n  height: 8px;\n  background-color: green; /* Adjust color as needed */\n  border-radius: 50%;\n  margin-right: 5px;\n  margin-top: 2px;\n}\n\n/* Style for chat header */\n.chat-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  padding: 10px;\n  border-bottom: 1px solid #ccc;\n  height: 25px;\n}\n\n.online-info {\n  font-size: x-small;\n  display: flex;\n  flex-direction: row;\n  justify-content: start;\n  align-items: flex-start;\n}\n\n.message-time {\n  font-size: x-small;\n  margin-top: auto;\n  margin-left: 8px;\n}\n\n.message {\n  display: flex;\n  flex-direction: row;\n  border: 1px solid #00000014;\n  border-radius: 5px;\n  padding: 5px;\n  margin-top: 5px;\n}\n.message p {\n  word-wrap: break-word;\n  margin: auto;\n  word-break: break-word !important;\n  text-align: justify;\n}\n',
+          '@media only screen and (max-width: 600px) {\n  /* Style for chat button */\n  #chatBtn {\n    position: fixed;\n    bottom: 20px;\n    right: 20px;\n    background-color: green;\n    color: white;\n    border: none;\n    border-radius: 50%;\n    width: 60px;\n    height: 60px;\n    font-size: 18px;\n    cursor: pointer;\n  }\n\n  /* Style for chat popup */\n  .chat-popup {\n    display: block;\n    position: fixed;\n    bottom: 90px;\n    right: 20px;\n    border: 1px solid #ccc;\n    border-radius: 10px;\n    width: 300px;\n    height: 425px;\n    background-color: white;\n    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);\n  }\n\n  /* Style for chat messages */\n  .chat-messages {\n    height: 300px;\n    overflow-y: auto;\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    display: flex;\n    flex-direction: column;\n  }\n\n  /* Style for message input */\n  #messageInput {\n    width: calc(100% - 80px);\n    padding: 10px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n  }\n\n  .input-box {\n    display: flex;\n    flex-direction: row;\n    align-content: center;\n    margin: 10px;\n  }\n\n  /* Style for send button */\n  #sendBtn {\n    background-color: #007bff;\n    color: white;\n    border: none;\n    border-radius: 5px;\n    padding: 10px 20px;\n    cursor: pointer;\n    margin-left: 5px;\n  }\n\n  #chatMessages div {\n    word-wrap: break-word;\n    padding-top: 5px;\n  }\n\n  .user-message {\n    align-self: flex-start; /* Align user messages to the left */\n  }\n\n  .assistant-message {\n    align-self: flex-end; /* Align assistant messages to the right */\n  }\n\n  /* Chat info */\n  .chat-info h3 {\n    margin: 0;\n    font-size: 16px;\n  }\n\n  /* Online sign */\n  .online-sign {\n    width: 8px;\n    height: 8px;\n    background-color: green; /* Adjust color as needed */\n    border-radius: 50%;\n    margin-right: 5px;\n    margin-top: 2px;\n  }\n\n  /* Style for chat header */\n  .chat-header {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n    height: 25px;\n  }\n\n  .online-info {\n    font-size: x-small;\n    display: flex;\n    flex-direction: row;\n    justify-content: start;\n    align-items: flex-start;\n  }\n\n  .message-time {\n    font-size: xx-small;\n    margin-top: auto;\n    margin-left: 8px;\n  }\n\n  .message {\n    display: flex;\n    flex-direction: row;\n    border: 1px solid #00000014;\n    border-radius: 5px;\n    padding: 5px;\n    margin-top: 5px;\n  }\n  .message p {\n    font-size: x-small;\n    word-wrap: break-word;\n    margin: auto;\n    word-break: break-word !important;\n    text-align: justify;\n  }\n}\n\n/* Style for chat button */\n#chatBtn {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  background-color: green;\n  color: white;\n  border: none;\n  border-radius: 50%;\n  width: 70px;\n  height: 70px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n/* Style for chat popup */\n.chat-popup {\n  display: block;\n  position: fixed;\n  bottom: 100px;\n  right: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  width: 400px;\n  height: 525px;\n  background-color: white;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);\n}\n\n/* Style for close button */\n.close-btn {\n  float: right;\n  cursor: pointer;\n}\n\n/* Style for chat messages */\n.chat-messages {\n  height: 400px;\n  overflow-y: auto;\n  padding: 10px;\n  border-bottom: 1px solid #ccc;\n  display: flex;\n  flex-direction: column;\n}\n\n/* Style for message input */\n#messageInput {\n  width: calc(100% - 80px);\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n}\n\n.input-box {\n  display: flex;\n  flex-direction: row;\n  align-content: center;\n  margin: 10px;\n}\n\n/* Style for send button */\n#sendBtn {\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  padding: 10px 20px;\n  cursor: pointer;\n  margin-left: 5px;\n}\n\n#chatMessages div {\n  word-wrap: break-word;\n  padding-top: 5px;\n}\n\n.user-message {\n  align-self: flex-start; /* Align user messages to the left */\n}\n\n.assistant-message {\n  align-self: flex-end; /* Align assistant messages to the right */\n}\n\n/* Chat info */\n.chat-info h3 {\n  margin: 0;\n  font-size: 16px;\n}\n\n/* Online sign */\n.online-sign {\n  width: 8px;\n  height: 8px;\n  background-color: green; /* Adjust color as needed */\n  border-radius: 50%;\n  margin-right: 5px;\n  margin-top: 2px;\n}\n\n/* Style for chat header */\n.chat-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  padding: 10px;\n  border-bottom: 1px solid #ccc;\n  height: 25px;\n}\n\n.online-info {\n  font-size: x-small;\n  display: flex;\n  flex-direction: row;\n  justify-content: start;\n  align-items: flex-start;\n}\n\n.message-time {\n  font-size: xx-small;\n  margin-top: auto;\n  margin-left: 8px;\n}\n\n.message {\n  display: flex;\n  flex-direction: row;\n  border: 1px solid #00000014;\n  border-radius: 5px;\n  padding: 5px;\n  margin-top: 5px;\n}\n.message p {\n  font-size: smaller;\n  word-wrap: break-word;\n  margin: auto;\n  word-break: break-word !important;\n  text-align: justify;\n}\n',
           '',
         ])
         const s = i
       },
       314: (e) => {
         e.exports = function (e) {
-          var t = []
+          var n = []
           return (
-            (t.toString = function () {
-              return this.map(function (t) {
-                var n = '',
-                  r = void 0 !== t[5]
+            (n.toString = function () {
+              return this.map(function (n) {
+                var t = '',
+                  r = void 0 !== n[5]
                 return (
-                  t[4] && (n += '@supports ('.concat(t[4], ') {')),
-                  t[2] && (n += '@media '.concat(t[2], ' {')),
-                  r && (n += '@layer'.concat(t[5].length > 0 ? ' '.concat(t[5]) : '', ' {')),
-                  (n += e(t)),
-                  r && (n += '}'),
-                  t[2] && (n += '}'),
-                  t[4] && (n += '}'),
-                  n
+                  n[4] && (t += '@supports ('.concat(n[4], ') {')),
+                  n[2] && (t += '@media '.concat(n[2], ' {')),
+                  r && (t += '@layer'.concat(n[5].length > 0 ? ' '.concat(n[5]) : '', ' {')),
+                  (t += e(n)),
+                  r && (t += '}'),
+                  n[2] && (t += '}'),
+                  n[4] && (t += '}'),
+                  t
                 )
               }).join('')
             }),
-            (t.i = function (e, n, r, o, a) {
+            (n.i = function (e, t, r, o, a) {
               'string' == typeof e && (e = [[null, e, void 0]])
               var i = {}
               if (r)
@@ -47,12 +47,12 @@
                 var l = [].concat(e[c])
                 ;(r && i[l[0]]) ||
                   (void 0 !== a && (void 0 === l[5] || (l[1] = '@layer'.concat(l[5].length > 0 ? ' '.concat(l[5]) : '', ' {').concat(l[1], '}')), (l[5] = a)),
-                  n && (l[2] ? ((l[1] = '@media '.concat(l[2], ' {').concat(l[1], '}')), (l[2] = n)) : (l[2] = n)),
+                  t && (l[2] ? ((l[1] = '@media '.concat(l[2], ' {').concat(l[1], '}')), (l[2] = t)) : (l[2] = t)),
                   o && (l[4] ? ((l[1] = '@supports ('.concat(l[4], ') {').concat(l[1], '}')), (l[4] = o)) : (l[4] = ''.concat(o))),
-                  t.push(l))
+                  n.push(l))
               }
             }),
-            t
+            n
           )
         }
       },
@@ -61,8 +61,8 @@
           return e[1]
         }
       },
-      287: (e, t) => {
-        var n = Symbol.for('react.element'),
+      287: (e, n) => {
+        var t = Symbol.for('react.element'),
           r = Symbol.for('react.portal'),
           o = Symbol.for('react.fragment'),
           a = Symbol.for('react.strict_mode'),
@@ -82,37 +82,37 @@
             enqueueReplaceState: function () {},
             enqueueSetState: function () {},
           },
-          y = Object.assign,
-          h = {}
-        function v(e, t, n) {
-          ;(this.props = e), (this.context = t), (this.refs = h), (this.updater = n || m)
+          h = Object.assign,
+          y = {}
+        function g(e, n, t) {
+          ;(this.props = e), (this.context = n), (this.refs = y), (this.updater = t || m)
         }
-        function g() {}
-        function b(e, t, n) {
-          ;(this.props = e), (this.context = t), (this.refs = h), (this.updater = n || m)
+        function x() {}
+        function b(e, n, t) {
+          ;(this.props = e), (this.context = n), (this.refs = y), (this.updater = t || m)
         }
-        ;(v.prototype.isReactComponent = {}),
-          (v.prototype.setState = function (e, t) {
+        ;(g.prototype.isReactComponent = {}),
+          (g.prototype.setState = function (e, n) {
             if ('object' != typeof e && 'function' != typeof e && null != e)
               throw Error('setState(...): takes an object of state variables to update or a function which returns an object of state variables.')
-            this.updater.enqueueSetState(this, e, t, 'setState')
+            this.updater.enqueueSetState(this, e, n, 'setState')
           }),
-          (v.prototype.forceUpdate = function (e) {
+          (g.prototype.forceUpdate = function (e) {
             this.updater.enqueueForceUpdate(this, e, 'forceUpdate')
           }),
-          (g.prototype = v.prototype)
-        var x = (b.prototype = new g())
-        ;(x.constructor = b), y(x, v.prototype), (x.isPureReactComponent = !0)
-        var _ = Array.isArray,
-          w = Object.prototype.hasOwnProperty,
+          (x.prototype = g.prototype)
+        var v = (b.prototype = new x())
+        ;(v.constructor = b), h(v, g.prototype), (v.isPureReactComponent = !0)
+        var w = Array.isArray,
+          _ = Object.prototype.hasOwnProperty,
           S = { current: null },
           E = { key: !0, ref: !0, __self: !0, __source: !0 }
-        function k(e, t, r) {
+        function k(e, n, r) {
           var o,
             a = {},
             i = null,
             s = null
-          if (null != t) for (o in (void 0 !== t.ref && (s = t.ref), void 0 !== t.key && (i = '' + t.key), t)) w.call(t, o) && !E.hasOwnProperty(o) && (a[o] = t[o])
+          if (null != n) for (o in (void 0 !== n.ref && (s = n.ref), void 0 !== n.key && (i = '' + n.key), n)) _.call(n, o) && !E.hasOwnProperty(o) && (a[o] = n[o])
           var u = arguments.length - 2
           if (1 === u) a.children = r
           else if (1 < u) {
@@ -120,26 +120,26 @@
             a.children = c
           }
           if (e && e.defaultProps) for (o in (u = e.defaultProps)) void 0 === a[o] && (a[o] = u[o])
-          return { $$typeof: n, type: e, key: i, ref: s, props: a, _owner: S.current }
+          return { $$typeof: t, type: e, key: i, ref: s, props: a, _owner: S.current }
         }
         function C(e) {
-          return 'object' == typeof e && null !== e && e.$$typeof === n
+          return 'object' == typeof e && null !== e && e.$$typeof === t
         }
         var j = /\/+/g
-        function P(e, t) {
+        function A(e, n) {
           return 'object' == typeof e && null !== e && null != e.key
             ? (function (e) {
-                var t = { '=': '=0', ':': '=2' }
+                var n = { '=': '=0', ':': '=2' }
                 return (
                   '$' +
                   e.replace(/[=:]/g, function (e) {
-                    return t[e]
+                    return n[e]
                   })
                 )
               })('' + e.key)
-            : t.toString(36)
+            : n.toString(36)
         }
-        function O(e, t, o, a, i) {
+        function O(e, n, o, a, i) {
           var s = typeof e
           ;('undefined' !== s && 'boolean' !== s) || (e = null)
           var u = !1
@@ -152,7 +152,7 @@
                 break
               case 'object':
                 switch (e.$$typeof) {
-                  case n:
+                  case t:
                   case r:
                     u = !0
                 }
@@ -160,25 +160,25 @@
           if (u)
             return (
               (i = i((u = e))),
-              (e = '' === a ? '.' + P(u, 0) : a),
-              _(i)
+              (e = '' === a ? '.' + A(u, 0) : a),
+              w(i)
                 ? ((o = ''),
                   null != e && (o = e.replace(j, '$&/') + '/'),
-                  O(i, t, o, '', function (e) {
+                  O(i, n, o, '', function (e) {
                     return e
                   }))
                 : null != i &&
                   (C(i) &&
-                    (i = (function (e, t) {
-                      return { $$typeof: n, type: e.type, key: t, ref: e.ref, props: e.props, _owner: e._owner }
+                    (i = (function (e, n) {
+                      return { $$typeof: t, type: e.type, key: n, ref: e.ref, props: e.props, _owner: e._owner }
                     })(i, o + (!i.key || (u && u.key === i.key) ? '' : ('' + i.key).replace(j, '$&/') + '/') + e)),
-                  t.push(i)),
+                  n.push(i)),
               1
             )
-          if (((u = 0), (a = '' === a ? '.' : a + ':'), _(e)))
+          if (((u = 0), (a = '' === a ? '.' : a + ':'), w(e)))
             for (var c = 0; c < e.length; c++) {
-              var l = a + P((s = e[c]), c)
-              u += O(s, t, o, l, i)
+              var l = a + A((s = e[c]), c)
+              u += O(s, n, o, l, i)
             }
           else if (
             ((l = (function (e) {
@@ -186,71 +186,71 @@
             })(e)),
             'function' == typeof l)
           )
-            for (e = l.call(e), c = 0; !(s = e.next()).done; ) u += O((s = s.value), t, o, (l = a + P(s, c++)), i)
+            for (e = l.call(e), c = 0; !(s = e.next()).done; ) u += O((s = s.value), n, o, (l = a + A(s, c++)), i)
           else if ('object' === s)
             throw (
-              ((t = String(e)),
+              ((n = String(e)),
               Error(
                 'Objects are not valid as a React child (found: ' +
-                  ('[object Object]' === t ? 'object with keys {' + Object.keys(e).join(', ') + '}' : t) +
+                  ('[object Object]' === n ? 'object with keys {' + Object.keys(e).join(', ') + '}' : n) +
                   '). If you meant to render a collection of children, use an array instead.',
               ))
             )
           return u
         }
-        function A(e, t, n) {
+        function P(e, n, t) {
           if (null == e) return e
           var r = [],
             o = 0
           return (
             O(e, r, '', '', function (e) {
-              return t.call(n, e, o++)
+              return n.call(t, e, o++)
             }),
             r
           )
         }
         function R(e) {
           if (-1 === e._status) {
-            var t = e._result
-            ;(t = t()).then(
-              function (t) {
-                ;(0 !== e._status && -1 !== e._status) || ((e._status = 1), (e._result = t))
+            var n = e._result
+            ;(n = n()).then(
+              function (n) {
+                ;(0 !== e._status && -1 !== e._status) || ((e._status = 1), (e._result = n))
               },
-              function (t) {
-                ;(0 !== e._status && -1 !== e._status) || ((e._status = 2), (e._result = t))
+              function (n) {
+                ;(0 !== e._status && -1 !== e._status) || ((e._status = 2), (e._result = n))
               },
             ),
-              -1 === e._status && ((e._status = 0), (e._result = t))
+              -1 === e._status && ((e._status = 0), (e._result = n))
           }
           if (1 === e._status) return e._result.default
           throw e._result
         }
         var M = { current: null },
-          T = { transition: null },
-          $ = { ReactCurrentDispatcher: M, ReactCurrentBatchConfig: T, ReactCurrentOwner: S }
-        ;(t.Children = {
-          map: A,
-          forEach: function (e, t, n) {
-            A(
+          I = { transition: null },
+          T = { ReactCurrentDispatcher: M, ReactCurrentBatchConfig: I, ReactCurrentOwner: S }
+        ;(n.Children = {
+          map: P,
+          forEach: function (e, n, t) {
+            P(
               e,
               function () {
-                t.apply(this, arguments)
+                n.apply(this, arguments)
               },
-              n,
+              t,
             )
           },
           count: function (e) {
-            var t = 0
+            var n = 0
             return (
-              A(e, function () {
-                t++
+              P(e, function () {
+                n++
               }),
-              t
+              n
             )
           },
           toArray: function (e) {
             return (
-              A(e, function (e) {
+              P(e, function (e) {
                 return e
               }) || []
             )
@@ -260,22 +260,22 @@
             return e
           },
         }),
-          (t.Component = v),
-          (t.Fragment = o),
-          (t.Profiler = i),
-          (t.PureComponent = b),
-          (t.StrictMode = a),
-          (t.Suspense = l),
-          (t.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = $),
-          (t.cloneElement = function (e, t, r) {
+          (n.Component = g),
+          (n.Fragment = o),
+          (n.Profiler = i),
+          (n.PureComponent = b),
+          (n.StrictMode = a),
+          (n.Suspense = l),
+          (n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = T),
+          (n.cloneElement = function (e, n, r) {
             if (null == e) throw Error('React.cloneElement(...): The argument must be a React element, but you passed ' + e + '.')
-            var o = y({}, e.props),
+            var o = h({}, e.props),
               a = e.key,
               i = e.ref,
               s = e._owner
-            if (null != t) {
-              if ((void 0 !== t.ref && ((i = t.ref), (s = S.current)), void 0 !== t.key && (a = '' + t.key), e.type && e.type.defaultProps)) var u = e.type.defaultProps
-              for (c in t) w.call(t, c) && !E.hasOwnProperty(c) && (o[c] = void 0 === t[c] && void 0 !== u ? u[c] : t[c])
+            if (null != n) {
+              if ((void 0 !== n.ref && ((i = n.ref), (s = S.current)), void 0 !== n.key && (a = '' + n.key), e.type && e.type.defaultProps)) var u = e.type.defaultProps
+              for (c in n) _.call(n, c) && !E.hasOwnProperty(c) && (o[c] = void 0 === n[c] && void 0 !== u ? u[c] : n[c])
             }
             var c = arguments.length - 2
             if (1 === c) o.children = r
@@ -284,9 +284,9 @@
               for (var l = 0; l < c; l++) u[l] = arguments[l + 2]
               o.children = u
             }
-            return { $$typeof: n, type: e.type, key: a, ref: i, props: o, _owner: s }
+            return { $$typeof: t, type: e.type, key: a, ref: i, props: o, _owner: s }
           }),
-          (t.createContext = function (e) {
+          (n.createContext = function (e) {
             return (
               ((e = { $$typeof: u, _currentValue: e, _currentValue2: e, _threadCount: 0, Provider: null, Consumer: null, _defaultValue: null, _globalName: null }).Provider = {
                 $$typeof: s,
@@ -295,112 +295,112 @@
               (e.Consumer = e)
             )
           }),
-          (t.createElement = k),
-          (t.createFactory = function (e) {
-            var t = k.bind(null, e)
-            return (t.type = e), t
+          (n.createElement = k),
+          (n.createFactory = function (e) {
+            var n = k.bind(null, e)
+            return (n.type = e), n
           }),
-          (t.createRef = function () {
+          (n.createRef = function () {
             return { current: null }
           }),
-          (t.forwardRef = function (e) {
+          (n.forwardRef = function (e) {
             return { $$typeof: c, render: e }
           }),
-          (t.isValidElement = C),
-          (t.lazy = function (e) {
+          (n.isValidElement = C),
+          (n.lazy = function (e) {
             return { $$typeof: p, _payload: { _status: -1, _result: e }, _init: R }
           }),
-          (t.memo = function (e, t) {
-            return { $$typeof: f, type: e, compare: void 0 === t ? null : t }
+          (n.memo = function (e, n) {
+            return { $$typeof: f, type: e, compare: void 0 === n ? null : n }
           }),
-          (t.startTransition = function (e) {
-            var t = T.transition
-            T.transition = {}
+          (n.startTransition = function (e) {
+            var n = I.transition
+            I.transition = {}
             try {
               e()
             } finally {
-              T.transition = t
+              I.transition = n
             }
           }),
-          (t.unstable_act = function () {
+          (n.unstable_act = function () {
             throw Error('act(...) is not supported in production builds of React.')
           }),
-          (t.useCallback = function (e, t) {
-            return M.current.useCallback(e, t)
+          (n.useCallback = function (e, n) {
+            return M.current.useCallback(e, n)
           }),
-          (t.useContext = function (e) {
+          (n.useContext = function (e) {
             return M.current.useContext(e)
           }),
-          (t.useDebugValue = function () {}),
-          (t.useDeferredValue = function (e) {
+          (n.useDebugValue = function () {}),
+          (n.useDeferredValue = function (e) {
             return M.current.useDeferredValue(e)
           }),
-          (t.useEffect = function (e, t) {
-            return M.current.useEffect(e, t)
+          (n.useEffect = function (e, n) {
+            return M.current.useEffect(e, n)
           }),
-          (t.useId = function () {
+          (n.useId = function () {
             return M.current.useId()
           }),
-          (t.useImperativeHandle = function (e, t, n) {
-            return M.current.useImperativeHandle(e, t, n)
+          (n.useImperativeHandle = function (e, n, t) {
+            return M.current.useImperativeHandle(e, n, t)
           }),
-          (t.useInsertionEffect = function (e, t) {
-            return M.current.useInsertionEffect(e, t)
+          (n.useInsertionEffect = function (e, n) {
+            return M.current.useInsertionEffect(e, n)
           }),
-          (t.useLayoutEffect = function (e, t) {
-            return M.current.useLayoutEffect(e, t)
+          (n.useLayoutEffect = function (e, n) {
+            return M.current.useLayoutEffect(e, n)
           }),
-          (t.useMemo = function (e, t) {
-            return M.current.useMemo(e, t)
+          (n.useMemo = function (e, n) {
+            return M.current.useMemo(e, n)
           }),
-          (t.useReducer = function (e, t, n) {
-            return M.current.useReducer(e, t, n)
+          (n.useReducer = function (e, n, t) {
+            return M.current.useReducer(e, n, t)
           }),
-          (t.useRef = function (e) {
+          (n.useRef = function (e) {
             return M.current.useRef(e)
           }),
-          (t.useState = function (e) {
+          (n.useState = function (e) {
             return M.current.useState(e)
           }),
-          (t.useSyncExternalStore = function (e, t, n) {
-            return M.current.useSyncExternalStore(e, t, n)
+          (n.useSyncExternalStore = function (e, n, t) {
+            return M.current.useSyncExternalStore(e, n, t)
           }),
-          (t.useTransition = function () {
+          (n.useTransition = function () {
             return M.current.useTransition()
           }),
-          (t.version = '18.2.0')
+          (n.version = '18.2.0')
       },
-      540: (e, t, n) => {
-        e.exports = n(287)
+      540: (e, n, t) => {
+        e.exports = t(287)
       },
-      323: (e, t, n) => {
-        n.r(t), n.d(t, { default: () => v })
-        var r = n(72),
-          o = n.n(r),
-          a = n(825),
-          i = n.n(a),
-          s = n(659),
-          u = n.n(s),
-          c = n(56),
-          l = n.n(c),
-          f = n(159),
-          p = n.n(f),
-          d = n(113),
-          m = n.n(d),
-          y = n(778),
-          h = {}
-        ;(h.styleTagTransform = m()), (h.setAttributes = l()), (h.insert = u().bind(null, 'head')), (h.domAPI = i()), (h.insertStyleElement = p()), o()(y.A, h)
-        const v = y.A && y.A.locals ? y.A.locals : void 0
+      323: (e, n, t) => {
+        t.r(n), t.d(n, { default: () => g })
+        var r = t(72),
+          o = t.n(r),
+          a = t(825),
+          i = t.n(a),
+          s = t(659),
+          u = t.n(s),
+          c = t(56),
+          l = t.n(c),
+          f = t(159),
+          p = t.n(f),
+          d = t(113),
+          m = t.n(d),
+          h = t(778),
+          y = {}
+        ;(y.styleTagTransform = m()), (y.setAttributes = l()), (y.insert = u().bind(null, 'head')), (y.domAPI = i()), (y.insertStyleElement = p()), o()(h.A, y)
+        const g = h.A && h.A.locals ? h.A.locals : void 0
       },
       72: (e) => {
-        var t = []
-        function n(e) {
-          for (var n = -1, r = 0; r < t.length; r++)
-            if (t[r].identifier === e) {
-              n = r
+        var n = []
+        function t(e) {
+          for (var t = -1, r = 0; r < n.length; r++)
+            if (n[r].identifier === e) {
+              t = r
               break
             }
-          return n
+          return t
         }
         function r(e, r) {
           for (var a = {}, i = [], s = 0; s < e.length; s++) {
@@ -409,26 +409,26 @@
               l = a[c] || 0,
               f = ''.concat(c, ' ').concat(l)
             a[c] = l + 1
-            var p = n(f),
+            var p = t(f),
               d = { css: u[1], media: u[2], sourceMap: u[3], supports: u[4], layer: u[5] }
-            if (-1 !== p) t[p].references++, t[p].updater(d)
+            if (-1 !== p) n[p].references++, n[p].updater(d)
             else {
               var m = o(d, r)
-              ;(r.byIndex = s), t.splice(s, 0, { identifier: f, updater: m, references: 1 })
+              ;(r.byIndex = s), n.splice(s, 0, { identifier: f, updater: m, references: 1 })
             }
             i.push(f)
           }
           return i
         }
-        function o(e, t) {
-          var n = t.domAPI(t)
+        function o(e, n) {
+          var t = n.domAPI(n)
           return (
-            n.update(e),
-            function (t) {
-              if (t) {
-                if (t.css === e.css && t.media === e.media && t.sourceMap === e.sourceMap && t.supports === e.supports && t.layer === e.layer) return
-                n.update((e = t))
-              } else n.remove()
+            t.update(e),
+            function (n) {
+              if (n) {
+                if (n.css === e.css && n.media === e.media && n.sourceMap === e.sourceMap && n.supports === e.supports && n.layer === e.layer) return
+                t.update((e = n))
+              } else t.remove()
             }
           )
         }
@@ -437,88 +437,88 @@
           return function (e) {
             e = e || []
             for (var i = 0; i < a.length; i++) {
-              var s = n(a[i])
-              t[s].references--
+              var s = t(a[i])
+              n[s].references--
             }
             for (var u = r(e, o), c = 0; c < a.length; c++) {
-              var l = n(a[c])
-              0 === t[l].references && (t[l].updater(), t.splice(l, 1))
+              var l = t(a[c])
+              0 === n[l].references && (n[l].updater(), n.splice(l, 1))
             }
             a = u
           }
         }
       },
       659: (e) => {
-        var t = {}
-        e.exports = function (e, n) {
+        var n = {}
+        e.exports = function (e, t) {
           var r = (function (e) {
-            if (void 0 === t[e]) {
-              var n = document.querySelector(e)
-              if (window.HTMLIFrameElement && n instanceof window.HTMLIFrameElement)
+            if (void 0 === n[e]) {
+              var t = document.querySelector(e)
+              if (window.HTMLIFrameElement && t instanceof window.HTMLIFrameElement)
                 try {
-                  n = n.contentDocument.head
+                  t = t.contentDocument.head
                 } catch (e) {
-                  n = null
+                  t = null
                 }
-              t[e] = n
+              n[e] = t
             }
-            return t[e]
+            return n[e]
           })(e)
           if (!r) throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.")
-          r.appendChild(n)
+          r.appendChild(t)
         }
       },
       159: (e) => {
         e.exports = function (e) {
-          var t = document.createElement('style')
-          return e.setAttributes(t, e.attributes), e.insert(t, e.options), t
+          var n = document.createElement('style')
+          return e.setAttributes(n, e.attributes), e.insert(n, e.options), n
         }
       },
-      56: (e, t, n) => {
+      56: (e, n, t) => {
         e.exports = function (e) {
-          var t = n.nc
-          t && e.setAttribute('nonce', t)
+          var n = t.nc
+          n && e.setAttribute('nonce', n)
         }
       },
       825: (e) => {
         e.exports = function (e) {
           if ('undefined' == typeof document) return { update: function () {}, remove: function () {} }
-          var t = e.insertStyleElement(e)
+          var n = e.insertStyleElement(e)
           return {
-            update: function (n) {
-              !(function (e, t, n) {
+            update: function (t) {
+              !(function (e, n, t) {
                 var r = ''
-                n.supports && (r += '@supports ('.concat(n.supports, ') {')), n.media && (r += '@media '.concat(n.media, ' {'))
-                var o = void 0 !== n.layer
-                o && (r += '@layer'.concat(n.layer.length > 0 ? ' '.concat(n.layer) : '', ' {')), (r += n.css), o && (r += '}'), n.media && (r += '}'), n.supports && (r += '}')
-                var a = n.sourceMap
+                t.supports && (r += '@supports ('.concat(t.supports, ') {')), t.media && (r += '@media '.concat(t.media, ' {'))
+                var o = void 0 !== t.layer
+                o && (r += '@layer'.concat(t.layer.length > 0 ? ' '.concat(t.layer) : '', ' {')), (r += t.css), o && (r += '}'), t.media && (r += '}'), t.supports && (r += '}')
+                var a = t.sourceMap
                 a && 'undefined' != typeof btoa && (r += '\n/*# sourceMappingURL=data:application/json;base64,'.concat(btoa(unescape(encodeURIComponent(JSON.stringify(a)))), ' */')),
-                  t.styleTagTransform(r, e, t.options)
-              })(t, e, n)
+                  n.styleTagTransform(r, e, n.options)
+              })(n, e, t)
             },
             remove: function () {
               !(function (e) {
                 if (null === e.parentNode) return !1
                 e.parentNode.removeChild(e)
-              })(t)
+              })(n)
             },
           }
         }
       },
       113: (e) => {
-        e.exports = function (e, t) {
-          if (t.styleSheet) t.styleSheet.cssText = e
+        e.exports = function (e, n) {
+          if (n.styleSheet) n.styleSheet.cssText = e
           else {
-            for (; t.firstChild; ) t.removeChild(t.firstChild)
-            t.appendChild(document.createTextNode(e))
+            for (; n.firstChild; ) n.removeChild(n.firstChild)
+            n.appendChild(document.createTextNode(e))
           }
         }
       },
-      480: function (e, t, n) {
+      480: function (e, n, t) {
         var r =
             (this && this.__awaiter) ||
-            function (e, t, n, r) {
-              return new (n || (n = Promise))(function (o, a) {
+            function (e, n, t, r) {
+              return new (t || (t = Promise))(function (o, a) {
                 function i(e) {
                   try {
                     u(r.next(e))
@@ -534,17 +534,17 @@
                   }
                 }
                 function u(e) {
-                  var t
+                  var n
                   e.done
                     ? o(e.value)
-                    : ((t = e.value),
-                      t instanceof n
-                        ? t
-                        : new n(function (e) {
-                            e(t)
+                    : ((n = e.value),
+                      n instanceof t
+                        ? n
+                        : new t(function (e) {
+                            e(n)
                           })).then(i, s)
                 }
-                u((r = r.apply(e, t || [])).next())
+                u((r = r.apply(e, n || [])).next())
               })
             },
           o =
@@ -552,15 +552,15 @@
             function (e) {
               return e && e.__esModule ? e : { default: e }
             }
-        Object.defineProperty(t, '__esModule', { value: !0 })
-        const a = n(540)
-        n(323)
-        const i = o(n(540)),
-          s = n(851),
-          u = n(20)
-        t.default = (e) => {
-          var t
-          const [n, o] = (0, a.useState)(!!e.isChatOpen && e.isChatOpen),
+        Object.defineProperty(n, '__esModule', { value: !0 })
+        const a = t(540)
+        t(323)
+        const i = o(t(540)),
+          s = t(851),
+          u = t(20)
+        n.default = (e) => {
+          var n
+          const [t, o] = (0, a.useState)(!!e.isChatOpen && e.isChatOpen),
             [c, l] = (0, a.useState)(e.messages ? e.messages : []),
             [f, p] = (0, a.useState)(''),
             d = (0, a.useRef)(null)
@@ -569,18 +569,18 @@
           }, [c])
           const m = () => {
             if ('' !== f.trim()) {
-              const t = { text: f, owner: 'user', time: new Date() }
-              l([...c, t]), e.isCustomAPI && e.setUserInput ? e.setUserInput(f) : y(), p('')
+              const n = { text: f, owner: 'user', time: new Date() }
+              l([...c, n]), e.isCustomAPI && e.setUserInput ? e.setUserInput(f) : h(), p('')
             }
           }
           ;(0, a.useEffect)(() => {
             e.message && l([...c, e.message])
           }, [e.message])
-          const y = () =>
+          const h = () =>
             r(void 0, void 0, void 0, function* () {
               const e = { text: f.trim() },
-                t = yield (0, u.chatAssistantAPIResponse)(e)
-              null !== t && l([...c, t.message])
+                n = yield (0, u.chatAssistantAPIResponse)(e)
+              null !== n && l([...c, n.message])
             })
           return i.default.createElement(
             'div',
@@ -591,12 +591,12 @@
                 id: 'chatBtn',
                 type: 'button',
                 onClick: () => {
-                  o(!n)
+                  o(!t)
                 },
               },
               'Chat',
             ),
-            n &&
+            t &&
               i.default.createElement(
                 'div',
                 { className: 'chat-popup', id: 'chatPopup' },
@@ -606,7 +606,7 @@
                   i.default.createElement(
                     'div',
                     { className: 'chat-info' },
-                    i.default.createElement('h3', null, null !== (t = e.name) && void 0 !== t ? t : 'KK'),
+                    i.default.createElement('h3', null, null !== (n = e.name) && void 0 !== n ? n : 'KK'),
                     i.default.createElement('div', { className: 'online-info' }, i.default.createElement('div', { className: 'online-sign' }), i.default.createElement('div', null, 'Online')),
                   ),
                   i.default.createElement(
@@ -624,10 +624,10 @@
                 i.default.createElement(
                   'div',
                   { className: 'chat-messages', id: 'chatMessages', ref: d },
-                  c.map((e, t) =>
+                  c.map((e, n) =>
                     i.default.createElement(
                       'div',
-                      { key: t, className: 'message ' + ('user' === e.owner ? 'user-message' : 'assistant-message') },
+                      { key: n, className: 'message ' + ('user' === e.owner ? 'user-message' : 'assistant-message') },
                       i.default.createElement('p', null, e.text),
                       i.default.createElement('span', { className: 'message-time' }, (0, s.formatMessageTime)(e.time)),
                     ),
@@ -652,33 +652,33 @@
           )
         }
       },
-      851: (e, t) => {
-        Object.defineProperty(t, '__esModule', { value: !0 }),
-          (t.formatMessageTime = void 0),
-          (t.formatMessageTime = function (e) {
+      851: (e, n) => {
+        Object.defineProperty(n, '__esModule', { value: !0 }),
+          (n.formatMessageTime = void 0),
+          (n.formatMessageTime = function (e) {
             return `${String(e.getHours()).padStart(2, '0')}:${String(e.getMinutes()).padStart(2, '0')}`
           })
       },
-      156: function (e, t, n) {
+      156: function (e, n, t) {
         var r =
           (this && this.__importDefault) ||
           function (e) {
             return e && e.__esModule ? e : { default: e }
           }
-        Object.defineProperty(t, '__esModule', { value: !0 }), (t.ChatbotAssistant = void 0)
-        var o = n(480)
-        Object.defineProperty(t, 'ChatbotAssistant', {
+        Object.defineProperty(n, '__esModule', { value: !0 }), (n.ChatbotAssistant = void 0)
+        var o = t(480)
+        Object.defineProperty(n, 'ChatbotAssistant', {
           enumerable: !0,
           get: function () {
             return r(o).default
           },
         })
       },
-      20: function (e, t) {
-        var n =
+      20: function (e, n) {
+        var t =
           (this && this.__awaiter) ||
-          function (e, t, n, r) {
-            return new (n || (n = Promise))(function (o, a) {
+          function (e, n, t, r) {
+            return new (t || (t = Promise))(function (o, a) {
               function i(e) {
                 try {
                   u(r.next(e))
@@ -694,27 +694,27 @@
                 }
               }
               function u(e) {
-                var t
+                var n
                 e.done
                   ? o(e.value)
-                  : ((t = e.value),
-                    t instanceof n
-                      ? t
-                      : new n(function (e) {
-                          e(t)
+                  : ((n = e.value),
+                    n instanceof t
+                      ? n
+                      : new t(function (e) {
+                          e(n)
                         })).then(i, s)
               }
-              u((r = r.apply(e, t || [])).next())
+              u((r = r.apply(e, n || [])).next())
             })
           }
-        Object.defineProperty(t, '__esModule', { value: !0 }),
-          (t.chatAssistantAPIResponse = void 0),
-          (t.chatAssistantAPIResponse = (e) =>
-            n(void 0, void 0, void 0, function* () {
-              var t
+        Object.defineProperty(n, '__esModule', { value: !0 }),
+          (n.chatAssistantAPIResponse = void 0),
+          (n.chatAssistantAPIResponse = (e) =>
+            t(void 0, void 0, void 0, function* () {
+              var n
               try {
-                const n = null !== (t = e.url) && void 0 !== t ? t : 'https://api.example.com/chat-assistant',
-                  r = yield fetch(n, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(e.text) })
+                const t = null !== (n = e.url) && void 0 !== n ? n : 'https://api.example.com/chat-assistant',
+                  r = yield fetch(t, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(e.text) })
                 if (!r.ok) throw new Error('Network response was not ok')
                 return yield r.json()
               } catch (e) {
@@ -723,24 +723,24 @@
             }))
       },
     },
-    t = {}
-  function n(r) {
-    var o = t[r]
+    n = {}
+  function t(r) {
+    var o = n[r]
     if (void 0 !== o) return o.exports
-    var a = (t[r] = { id: r, exports: {} })
-    return e[r].call(a.exports, a, a.exports, n), a.exports
+    var a = (n[r] = { id: r, exports: {} })
+    return e[r].call(a.exports, a, a.exports, t), a.exports
   }
-  ;(n.n = (e) => {
-    var t = e && e.__esModule ? () => e.default : () => e
-    return n.d(t, { a: t }), t
+  ;(t.n = (e) => {
+    var n = e && e.__esModule ? () => e.default : () => e
+    return t.d(n, { a: n }), n
   }),
-    (n.d = (e, t) => {
-      for (var r in t) n.o(t, r) && !n.o(e, r) && Object.defineProperty(e, r, { enumerable: !0, get: t[r] })
+    (t.d = (e, n) => {
+      for (var r in n) t.o(n, r) && !t.o(e, r) && Object.defineProperty(e, r, { enumerable: !0, get: n[r] })
     }),
-    (n.o = (e, t) => Object.prototype.hasOwnProperty.call(e, t)),
-    (n.r = (e) => {
+    (t.o = (e, n) => Object.prototype.hasOwnProperty.call(e, n)),
+    (t.r = (e) => {
       'undefined' != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }), Object.defineProperty(e, '__esModule', { value: !0 })
     }),
-    (n.nc = void 0),
-    n(156)
+    (t.nc = void 0),
+    t(156)
 })()
