@@ -25,21 +25,16 @@ export const chatAssistantAPIResponse = async (data: IChatAssistant): Promise<an
   }
 }
 
-export const chatGPTAssistantAPIResponse = async (data: IChatAssistant): Promise<any> => {
+export const chatGPTAssistantAPIResponse = async (data: IChatAssistant, chatHistory?: ChatCompletionMessageParam[]): Promise<any> => {
   try {
-    const message: ChatCompletionMessageParam[] = [
-      { role: 'system', content: data.context ?? 'You are a helpful assistant.' },
-      { role: 'user', content: 'Who won the world series in 2020?' },
-      { role: 'assistant', content: 'The Los Angeles Dodgers won the World Series in 2020.' },
-      { role: 'user', content: 'Where was it played?' },
-    ]
+    const messages: ChatCompletionMessageParam[] = chatHistory && chatHistory?.length !== 0 ? [...chatHistory] : [{ role: 'system', content: data.context ?? 'You are a helpful assistant.' }]
+    messages.push({ role: 'user', content: data.text })
+
     const openai = new OpenAI({ apiKey: data.apiKey, dangerouslyAllowBrowser: true })
     const completion = await openai.chat.completions.create({
-      messages: message,
+      messages: messages,
       model: data.models ?? 'gpt-3.5-turbo',
     })
-
-    console.log(completion.choices[0])
 
     return completion.choices[0]
   } catch (error) {

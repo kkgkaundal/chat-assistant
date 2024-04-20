@@ -7,11 +7,13 @@ import { formatMessageTime } from '../helpers/helpers'
 import { chatAssistantAPIResponse, chatGPTAssistantAPIResponse } from '../services/chat-assistant-service'
 import { IChatAssistant } from '../types/chat-assistant-interface'
 import { AssistantOptions } from '../types/assistant-options'
+import { ChatCompletionMessageParam } from 'openai/resources'
 
 const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (props) => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(props.isChatOpen ? props.isChatOpen : false)
   const [messages, setMessages] = useState<Message[]>(props.messages ? props.messages : [])
   const [inputValue, setInputValue] = useState<string>('')
+  const [history, setHistory] = useState<ChatCompletionMessageParam[]>([])
 
   const chatMessagesRef = useRef<HTMLDivElement>(null)
 
@@ -66,9 +68,11 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
       context: props.context,
       models: props.models,
     }
-    const assistantResponse = await chatGPTAssistantAPIResponse(data)
+    const assistantResponse = await chatGPTAssistantAPIResponse(data, history)
     if (assistantResponse !== null) {
-      setMessages([...messages, assistantResponse.message])
+      setHistory(assistantResponse.message)
+      const lastMessage = assistantResponse.message.pop()
+      setMessages([...messages, lastMessage])
     }
   }
 
