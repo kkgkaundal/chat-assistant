@@ -1,5 +1,4 @@
 import { useState, KeyboardEvent, useEffect, useRef } from 'react'
-import '../styles/styles.css'
 import React from 'react'
 import { Message } from '../types/message'
 import { ChatbotAssistantProps } from '../types/chat-assistant-props'
@@ -14,6 +13,7 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
   const [messages, setMessages] = useState<Message[]>(props.messages ? props.messages : [])
   const [inputValue, setInputValue] = useState<string>('')
   const [history, setHistory] = useState<ChatCompletionMessageParam[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const chatMessagesRef = useRef<HTMLDivElement>(null)
 
@@ -37,12 +37,14 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
 
   const handleMessageSend = () => {
     if (inputValue.trim() !== '') {
+      setIsLoading(true)
       const message: Message = {
         text: inputValue,
         owner: 'user',
         time: new Date(),
       }
-      setMessages([...messages, message])
+      setMessages((prevMessages) => [...prevMessages, message])
+      setHistory((prevHistory) => [...prevHistory, { role: 'user', content: inputValue }])
       if (props.isCustomAPI && props.setUserInput) {
         props.setUserInput(inputValue)
       } else if (props.isChatGPT) {
@@ -51,8 +53,11 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
         } else {
           throw new Error('API key not provided!')
         }
+      } else {
+        handleAssistantResponse()
       }
       setInputValue('')
+      setIsLoading(false)
     }
   }
   useEffect(() => {
@@ -70,9 +75,34 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
     }
     const assistantResponse = await chatGPTAssistantAPIResponse(data, history)
     if (assistantResponse !== null) {
-      setHistory(assistantResponse.message)
-      const lastMessage = assistantResponse.message.pop()
-      setMessages([...messages, lastMessage])
+      setHistory((prevHistory) => [...prevHistory, assistantResponse.message])
+      const lastMessageData = assistantResponse.message.context
+      const lastMessage: Message = {
+        text: lastMessageData,
+        owner: 'assistant',
+        time: new Date(),
+      }
+      setMessages((prevMessages) => [...prevMessages, lastMessage])
+    }
+  }
+
+  const handleAssistantResponse = async () => {
+    const data: IChatAssistant = {
+      text: inputValue.trim(),
+      apiKey: props.apiKey,
+      context: props.context,
+      models: props.models,
+    }
+    const assistantResponse = await chatAssistantAPIResponse(data, history)
+    if (assistantResponse !== null) {
+      setHistory((prevHistory) => [...prevHistory, assistantResponse.message])
+      const lastMessageData = assistantResponse.message.content
+      const lastMessage: Message = {
+        text: lastMessageData,
+        owner: 'assistant',
+        time: new Date(),
+      }
+      setMessages((prevMessages) => [...prevMessages, lastMessage])
     }
   }
 
@@ -121,6 +151,52 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
                 <span className="message-time">{formatMessageTime(message.time)}</span>
               </div>
             ))}
+            {isLoading && (
+              <div
+                key={'messagesLoading'}
+                className={`message  assistant-message`}>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-primary opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-secondary opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-success opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-danger opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-warning opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-info opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-neutral-50 opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+                <div
+                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-[#332d2d] opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+                  role="status">
+                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                </div>
+              </div>
+            )}
           </div>
           <div className="input-box">
             <input
