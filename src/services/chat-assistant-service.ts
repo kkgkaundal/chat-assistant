@@ -5,26 +5,28 @@ import axios from 'axios'
 
 export const chatAssistantAPIResponse = async (data: IChatAssistant, chatHistory?: ChatCompletionMessageParam[]): Promise<any> => {
   try {
-    const messages: ChatCompletionMessageParam[] = [
-      { role: 'system', content: 'You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user' },
+    let messages: ChatCompletionMessageParam[] = [
+      {
+        role: 'system',
+        content: `You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user based of bellow summery of contract /n  ${data.context}`,
+      },
       { role: 'assistant', content: 'Hi my name is Erica. How can I help you' },
-      { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
-      { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
+      // { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
+      // { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
     ]
-    if (chatHistory?.length !== undefined && chatHistory.length > 0) {
-      messages.concat(chatHistory)
+    if (chatHistory) {
+      messages = messages.concat(chatHistory)
     }
+
     messages.push({ role: 'user', content: data.text })
     const requestData = {
       body: {
         stream: false,
-        messages: messages,
-        model: 'TinyLlama_TinyLlama-1.1B-Chat-v1.0',
       },
-      context: data.context,
-      greeting: 'You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user',
+      context: `You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user based of bellow summery of contract /n  ${data.context}`,
+      greeting: 'Hi my name is Erica. How can I help you',
       prompt: data.text,
-      model: 'TinyLlama_TinyLlama-1.1B-Chat-v1.0',
+      model: '01-ai_Yi-6B-Chat',
       messages: messages,
       mode: 'chat',
       character: 'Erica',
@@ -43,15 +45,19 @@ export const chatAssistantAPIResponse = async (data: IChatAssistant, chatHistory
 
 export const chatGPTAssistantAPIResponse = async (data: IChatAssistant, chatHistory?: ChatCompletionMessageParam[]): Promise<any> => {
   try {
-    const messages: ChatCompletionMessageParam[] = [
-      { role: 'system', content: 'You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user' },
+    let messages: ChatCompletionMessageParam[] = [
+      {
+        role: 'system',
+        content: `You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user related contract which summery is, ${data.context}`,
+      },
       { role: 'assistant', content: 'Hi my name is Erica. How can I help you' },
-      { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
-      { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
+      // { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
+      // { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
     ]
-    if (chatHistory?.length !== undefined && chatHistory.length > 0) {
-      messages.concat(chatHistory)
+    if (chatHistory) {
+      messages = messages.concat(chatHistory)
     }
+
     messages.push({ role: 'user', content: data.text })
 
     const openai = new OpenAI({ apiKey: data.apiKey, dangerouslyAllowBrowser: true })
@@ -62,7 +68,6 @@ export const chatGPTAssistantAPIResponse = async (data: IChatAssistant, chatHist
 
     return completion.choices[0]
   } catch (error) {
-    return error
     return null
   }
 }

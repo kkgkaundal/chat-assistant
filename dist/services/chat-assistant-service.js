@@ -18,26 +18,27 @@ const axios_1 = __importDefault(require("axios"));
 const chatAssistantAPIResponse = (data, chatHistory) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const messages = [
-            { role: 'system', content: 'You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user' },
+        let messages = [
+            {
+                role: 'system',
+                content: `You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user based of bellow summery of contract /n  ${data.context}`,
+            },
             { role: 'assistant', content: 'Hi my name is Erica. How can I help you' },
-            { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
-            { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
+            // { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
+            // { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
         ];
-        if ((chatHistory === null || chatHistory === void 0 ? void 0 : chatHistory.length) !== undefined && chatHistory.length > 0) {
-            messages.concat(chatHistory);
+        if (chatHistory) {
+            messages = messages.concat(chatHistory);
         }
         messages.push({ role: 'user', content: data.text });
         const requestData = {
             body: {
                 stream: false,
-                messages: messages,
-                model: 'TinyLlama_TinyLlama-1.1B-Chat-v1.0',
             },
-            context: data.context,
-            greeting: 'You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user',
+            context: `You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user based of bellow summery of contract /n  ${data.context}`,
+            greeting: 'Hi my name is Erica. How can I help you',
             prompt: data.text,
-            model: 'TinyLlama_TinyLlama-1.1B-Chat-v1.0',
+            model: '01-ai_Yi-6B-Chat',
             messages: messages,
             mode: 'chat',
             character: 'Erica',
@@ -57,14 +58,17 @@ exports.chatAssistantAPIResponse = chatAssistantAPIResponse;
 const chatGPTAssistantAPIResponse = (data, chatHistory) => __awaiter(void 0, void 0, void 0, function* () {
     var _b;
     try {
-        const messages = [
-            { role: 'system', content: 'You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user' },
+        let messages = [
+            {
+                role: 'system',
+                content: `You are Erica and you have sound knowledge of contract management systems. You are answering or clarifying all the doubts of user related contract which summery is, ${data.context}`,
+            },
             { role: 'assistant', content: 'Hi my name is Erica. How can I help you' },
-            { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
-            { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
+            // { role: 'user', content: `Hi bellow is the summery of my blockchain contact and i want details about this, here is summery /n ${data.context}` },
+            // { role: 'assistant', content: 'Sure i can help you , what is your question about this contract' },
         ];
-        if ((chatHistory === null || chatHistory === void 0 ? void 0 : chatHistory.length) !== undefined && chatHistory.length > 0) {
-            messages.concat(chatHistory);
+        if (chatHistory) {
+            messages = messages.concat(chatHistory);
         }
         messages.push({ role: 'user', content: data.text });
         const openai = new openai_1.default({ apiKey: data.apiKey, dangerouslyAllowBrowser: true });
@@ -75,7 +79,6 @@ const chatGPTAssistantAPIResponse = (data, chatHistory) => __awaiter(void 0, voi
         return completion.choices[0];
     }
     catch (error) {
-        return error;
         return null;
     }
 });

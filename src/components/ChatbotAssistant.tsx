@@ -35,8 +35,9 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
     setIsChatOpen(false)
   }
 
-  const handleMessageSend = () => {
+  const handleMessageSend = async () => {
     if (inputValue.trim() !== '') {
+      setHistory((prevHistory) => [...prevHistory, { role: 'user', content: inputValue.trim() }])
       setIsLoading(true)
       const message: Message = {
         text: inputValue,
@@ -44,19 +45,17 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
         time: new Date(),
       }
       setMessages((prevMessages) => [...prevMessages, message])
-      setHistory((prevHistory) => [...prevHistory, { role: 'user', content: inputValue }])
       if (props.isCustomAPI && props.setUserInput) {
         props.setUserInput(inputValue)
       } else if (props.isChatGPT) {
         if (props.apiKey) {
-          handleGPTAssistantResponse()
+          await handleGPTAssistantResponse()
         } else {
           throw new Error('API key not provided!')
         }
       } else {
-        handleAssistantResponse()
+        await handleAssistantResponse()
       }
-      setInputValue('')
       setIsLoading(false)
     }
   }
@@ -73,6 +72,7 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
       context: props.context,
       models: props.models,
     }
+    setInputValue('')
     const assistantResponse = await chatGPTAssistantAPIResponse(data, history)
     if (assistantResponse !== null) {
       setHistory((prevHistory) => [...prevHistory, assistantResponse.message])
@@ -93,6 +93,7 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
       context: props.context,
       models: props.models,
     }
+    setInputValue('')
     const assistantResponse = await chatAssistantAPIResponse(data, history)
     if (assistantResponse !== null) {
       setHistory((prevHistory) => [...prevHistory, assistantResponse.message])
@@ -152,48 +153,12 @@ const ChatbotAssistant: React.FC<ChatbotAssistantProps & AssistantOptions> = (pr
               </div>
             ))}
             {isLoading && (
-              <div
-                key={'messagesLoading'}
-                className={`message  assistant-message`}>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-primary opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                </div>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-secondary opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                </div>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-success opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                </div>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-danger opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                </div>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-warning opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                </div>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-info opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                </div>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-neutral-50 opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                </div>
-                <div
-                  className="inline-block h-2 w-2 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] text-[#332d2d] opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+              <div className={`message assistant-message`}>
+                <div className="typing-container">
+                  <div className="typing-dot red"></div>
+                  <div className="typing-dot blue"></div>
+                  <div className="typing-dot green"></div>
+                  <div className="typing-dot yellow"></div>
                 </div>
               </div>
             )}

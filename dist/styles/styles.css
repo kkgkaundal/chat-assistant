@@ -288,3 +288,46 @@
   word-break: break-word !important;
   text-align: justify;
 }
+
+.typing-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 2px;
+  margin: 0 5px;
+  border-radius: 50%;
+  animation: typing 1s infinite alternate;
+  margin-bottom: 2px;
+}
+
+.red {
+  background-color: #ff6347; /* Red color */
+}
+
+.blue {
+  background-color: #4682b4; /* Blue color */
+}
+
+.green {
+  background-color: #32cd32; /* Green color */
+}
+
+.yellow {
+  background-color: #ffd700; /* Yellow color */
+}
+
+@keyframes typing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
